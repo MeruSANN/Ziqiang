@@ -198,16 +198,17 @@ class Ui_MainWindow(object):
         else:
             try:
                 file=open(self.FileName.text(),'r')
+                    QRImagePath=os.getcwd()+'/QRcode.png'
+                qr=qrcode.QRCode(
+                    version=1,
+                    error_correction=qrcode.constants.ERROR_CORRECT_L,
+                    box_size=10,
+                    border=2,
+                )
+                qr.add_data(file.readlines())
+                img=qr.make_image()
+                img.save('qrcode.png')
+                QMessageBox.information(self,'Success','Done.',QMessageBox.Ok)
             except:
                 QMessageBox.information(self,'Error','File Not Found!',QMessageBox.Ok)
-            QRImagePath=os.getcwd()+'/QRcode.png'
-            qr=qrcode.QRCode(
-                version=1,
-                error_correction=qrcode.constants.ERROR_CORRECT_L,
-                box_size=10,
-                border=2,
-            )
-            qr.add_data(file.readlines())
-            img=qr.make_image()
-            img.save('qrcode.png')
-            QMessageBox.information(self,'Success','Done.',QMessageBox.Ok)
+            
