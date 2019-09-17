@@ -198,7 +198,7 @@ class Ui_MainWindow(object):
         else:
             try:
                 file=open(self.FileName.text(),'r')
-                    QRImagePath=os.getcwd()+'/QRcode.png'
+                QRImagePath=os.getcwd()+'/QRcode.png'
                 qr=qrcode.QRCode(
                     version=1,
                     error_correction=qrcode.constants.ERROR_CORRECT_L,
