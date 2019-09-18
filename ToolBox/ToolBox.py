@@ -185,16 +185,19 @@ class Ui_MainWindow(object):
                 QMessageBox.information(self,'Error','Input Error!',QMessageBox.Ok)
         elif sender.objectName()=='Transform1':
             s=self.JSONInput.toPlainText()
-            dic1=json.loads(s)
-            dic2={}
-            while len(dic1):
-                p=dic1.popitem()
-                if p[1] in dic2:
-                    dic2[p[1]]=[dic2[p[1]],p[0]]
-                else:
-                    dic2[p[1]]=p[0]
-            jsn=json.dumps(dic2)
-            self.JSONResult.setPlainText(str(dic2)+'\n'+str(type(dic2))+'\n'+str(jsn)+'\n'+str(type(jsn)))
+            try:
+                dic1=json.loads(s)
+                dic2={}
+                while len(dic1):
+                    p=dic1.popitem()
+                    if p[1] in dic2:
+                        dic2[p[1]]=[dic2[p[1]],p[0]]
+                    else:
+                        dic2[p[1]]=p[0]
+                jsn=json.dumps(dic2)
+                self.JSONResult.setPlainText(str(dic2)+'\n'+str(type(dic2))+'\n'+str(jsn)+'\n'+str(type(jsn)))
+            except:
+                QMessageBox.information(self,'Error','Input Error!',QMessageBox.Ok)
         else:
             try:
                 file=open(self.FileName.text(),'r')
