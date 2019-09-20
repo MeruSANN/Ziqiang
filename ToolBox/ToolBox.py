@@ -9,10 +9,10 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QFileDialog
-import base64
 import json
 import os
 import qrcode
+import base64
 
 
 class Ui_MainWindow(object):
@@ -150,11 +150,12 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
         self.Encode.clicked.connect(self.buttonClicked)
         self.Decode.clicked.connect(self.buttonClicked)
         self.Transform1.clicked.connect(self.buttonClicked)
         self.Transform2.clicked.connect(self.buttonClicked)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -174,44 +175,56 @@ class Ui_MainWindow(object):
         self.action1.setText(_translate("MainWindow", "1"))
 
     def buttonClicked(self):
-        sender = self.sender()
+        sender=self.sender()
         st=self.Base64Input.toPlainText()
         if sender.objectName()=='Encode':
-            self.Result.setPlainText(str(base64.b64encode(st.encode('utf-8')),'utf-8'))
+            self.encode(st)
         elif sender.objectName()=='Decode':
-            try:
-                self.Result.setPlainText(str(base64.b64decode(st.encode('utf-8')),'utf-8'))
-            except :
-                QMessageBox.information(self,'Error','Input Error!',QMessageBox.Ok)
+            self.decode(st)
         elif sender.objectName()=='Transform1':
-            s=self.JSONInput.toPlainText()
-            try:
-                dic1=json.loads(s)
-                dic2={}
-                while len(dic1):
-                    p=dic1.popitem()
-                    if p[1] in dic2:
-                        dic2[p[1]]=[dic2[p[1]],p[0]]
-                    else:
-                        dic2[p[1]]=p[0]
-                jsn=json.dumps(dic2)
-                self.JSONResult.setPlainText(str(dic2)+'\n'+str(type(dic2))+'\n'+str(jsn)+'\n'+str(type(jsn)))
-            except:
-                QMessageBox.information(self,'Error','Input Error!',QMessageBox.Ok)
+            self.transform1()
         else:
-            try:
-                file=open(self.FileName.text(),'r')
-                QRImagePath=os.getcwd()+'/QRcode.png'
-                qr=qrcode.QRCode(
-                    version=1,
-                    error_correction=qrcode.constants.ERROR_CORRECT_L,
-                    box_size=10,
-                    border=2,
-                )
-                qr.add_data(file.readlines())
-                img=qr.make_image()
-                img.save('qrcode.png')
-                QMessageBox.information(self,'Success','Done.',QMessageBox.Ok)
-            except:
-                QMessageBox.information(self,'Error','File Not Found!',QMessageBox.Ok)
-            
+            self.transform2()
+
+    def encode(self,st):
+        print(1)
+        self.Result.setPlainText(str(base64.b64encode(st.encode('utf-8')),'utf-8'))
+
+    def decode(self,st):
+        try:
+            self.Result.setPlainText(str(base64.b64decode(st.encode('utf-8')),'utf-8'))
+        except:
+            QMessageBox.information(self,'Error','Input Error!',QMessageBox.Ok)
+
+    def transform1(self):
+        s=self.JSONInput.toPlainText()
+        try:
+            dic1=json.loads(s)
+            dic2={}
+            while len(dic1):
+                p=dic1.popitem()
+                if p[1] in dic2:
+                    dic2[p[1]]=[dic2[p[1]],p[0]]
+                else:
+                    dic2[p[1]]=p[0]
+            jsn=json.dumps(dic2)
+            self.JSONResult.setPlainText(str(dic2)+'\n'+str(type(dic2))+'\n'+str(jsn)+'\n'+str(type(jsn)))
+        except:
+            QMessageBox.information(self,'Error','Input Error!',QMessageBox.Ok)
+
+    def transform2(self):
+        try:
+            file=open(self.FileName.text(),'r')
+            QRImagePath=os.getcwd()+'/QRcode.jpg'
+            qr=qrcode.QRCode(
+                version=1,
+                error_correction=qrcode.constants.ERROR_CORRECT_L,
+                box_size=10,
+                border=2,
+            )
+            qr.add_data(file.readlines())
+            img=qr.make_image()
+            img.save('qrcode.jpg')
+            QMessageBox.information(self,'Success','Done.',QMessageBox.Ok)
+        except:
+            QMessageBox.information(self,'Error','File Not Found!',QMessageBox.Ok)
