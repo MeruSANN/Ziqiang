@@ -1,0 +1,164 @@
+<html>
+<head>
+	<title>JavaScript.com</title>
+	<style type="text/css">
+		body{
+			margin:0px;
+			background-color:black;
+		}
+		.button{
+			color:white;
+			font-family:gotham ssm a;
+		}
+		a{color:white;text-decoration:none;}
+		a:hover{ color:white;text-decoration:underline;}
+		.divInput{
+			position:relative;
+			text-align:center;
+			top:5%;
+		}
+		#header{
+			background-color:black;
+			height:10%;
+		}
+		#main{
+			background-image:url(pictures/bg.jpg);
+			background-size:100%;
+			background-color:black;
+			background-position:-10%;
+			float:center;
+			height:67%;
+			text-align:center;
+		}
+		#pic1{
+			background-image:url(pictures/1.jpg);
+			background-position:-20px 0px;
+			background-repeat:no-repeat;
+			margin:0px;
+			background-color:white;
+			float:left;
+			height:46.1%;
+			width:33.33%;
+			overflow:hidden;
+			text-align:center;
+			line-height:50px;
+		}
+		#pic2{
+			background-image:url(pictures/2.jpg);
+			background-position:-20px 0px;
+			background-repeat:no-repeat;
+			background-color:gray;
+			float:left;
+			width:33.33%;
+			height:46.1%;
+			overflow:hidden;
+			text-align:center;
+			line-height:50px;
+		}
+		#pic3{
+			background-image:url(pictures/3.jpg);
+			background-position:-20px 0px;
+			background-repeat:no-repeat;
+			background-color:dimgray;
+			float:left;
+			width:33.33%;
+			height:46.1%;
+			overflow:hidden;
+			text-align:center;
+			line-height:50px;
+		}
+		#bottom{
+			float:left;
+			width:100%;
+			height:10%;
+		}
+	</style>
+	<link rel="icon" type="image/png" href="pictures/Icon.png">
+</head>
+
+<body>
+	<div id="header">
+		<div class="button" style="font-size:14px;">
+			<a href="https://www.javascript.com/learn/strings/" 
+	  		   style="position:absolute;right:15%;top:6%;">Learn</a>
+			<a href="https://www.javascript.com/resources/" 
+			   style="position:absolute;right:8.3%;top:6%;">Resources</a>
+			<a href="https://www.javascript.com/about/" 
+		       style="position:absolute;right:3%;top:6%;">About</a>
+		</div>
+		<a href="https://www.javascript.com/" 
+		   style="position:absolute;left:2.1%;top:2.95%;"
+	       target="_blank">
+		<img src="pictures/js-logo.png" width="50%" >
+		</a>
+		<a href="https://www.javascript.com/try"
+		   style="position:absolute;right:20%;top:4.8%;">
+		   <img src="pictures/buttons/try-javascript-off.png" 
+			    onMouseOver="this.src='pictures/buttons/try-javascript-on.png'"
+		   	    onMouseOut="this.src='pictures/buttons/try-javascript-off.png'">
+		</a>
+	</div>
+	<div id="main">
+		<p style="color:gray;position:relative;font-family:Helvetica;font-size:25px;top:16%">READY TO TRY</p>
+		<p style="color:white;position:relative;font-family:Helvetica;font-size:70px;top:5%"><b>JavaScript?</b></p>
+		<p style="color:LightGrey;position:relative;font-family:Arial;font-size:22px;">Begin learning here by typing in your first name surrounded by quotation marks, and<br>ending with a semicolon. For example, you could type the name<span style="color:dimgray;border:1px solid gray;background:white;">"Jamie";</span>  and then hit<br>enter.</p>
+		<div class="divInput">
+			<input type="text"
+			       style="font-size:20px;color:white;background-color:black;width:48%;height:50px;border:1px solid black;padding:0px 40px">
+			<img src="pictures/arrow.png"
+				 style="position:absolute;left:26%;top:10%">
+		</div>
+	</div>
+	<div id="pic1">
+		<p style="color:gray;position:relative;font-family:Helvetica;font-size:20px;top:18%"><b>INTRODUCTION</b></p>
+		<p style="color:white;position:relative;font-family:Helvetica;font-size:35px;top:10%">Courses and paths to<br>get you going</p>
+		</a>
+		<a href="https://www.pluralsight.com/product/paths">
+			<img style="position:absolute;top:108%;left:12%"
+				 src="pictures/buttons/get-started-off.png" 
+			     onMouseOver="this.src='pictures/buttons/get-started-on.png'"
+		   	     onMouseOut="this.src='pictures/buttons/get-started-off.png'">
+		</a>
+	</div>
+	<div id="pic2">
+		<p style="color:gray;position:relative;font-family:Helvetica;font-size:20px;top:18%"><b>SKILL ASSESSMENT</b></p>
+		<p style="color:white;position:relative;font-family:Helvetica;font-size:35px;top:10%">Know where your skills<br>stand</p>
+		</a>
+		<a href="https://www.pluralsight.com/product/skill-iq">
+			<img style="position:absolute;top:108%;left:43.3%"
+				 src="pictures/buttons/measure-your-skills-off.png" 
+			     onMouseOver="this.src='pictures/buttons/measure-your-skills-on.png'"
+		   	     onMouseOut="this.src='pictures/buttons/measure-your-skills-off.png'">
+		</a>
+	</div>
+	<div id="pic3">
+		<p style="color:gray;position:relative;font-family:Helvetica;font-size:20px;top:18%"><b>INTRODUCTION</b></p>
+		<p style="color:white;position:relative;font-family:Helvetica;font-size:35px;top:10%">See where Javascript<br>ranks</p>
+		</a>
+		<a href="https://www.pluralsight.com/product/paths">
+			<img style="position:absolute;top:108%;left:77.25%"
+				 src="pictures/buttons/dive-into-the-data-off.png" 
+			     onMouseOver="this.src='pictures/buttons/dive-into-the-data-on.png'"
+		   	     onMouseOut="this.src='pictures/buttons/dive-into-the-data-off.png'">
+		</a>
+	</div>
+	<div id="bottom">
+		<a href="https://www.javascript.com/" 
+		   style="position:absolute;left:2.1%;top:128.3%;"
+	       target="_blank">
+		<img src="pictures/js-logo.png" width="31%" >
+		</a>
+		<p style="color:gray;position:relative;top:26%;left:12%;font-size:13px;width:30%">© 2016 - 2019 JavaScript.com</p>
+		<div class="button" style="font-size:13px;">
+			<a href="https://www.javascript.com/learn/strings/" 
+	  		   style="position:absolute;right:12.4%;top:130%;">Learn</a>
+			<a href="https://www.javascript.com/resources/" 
+			   style="position:absolute;right:7.5%;top:130%;">Resources</a>
+			<a href="https://www.javascript.com/about/" 
+		       style="position:absolute;right:4%;top:130%;">About</a>
+			<pre style="position:absolute;right:6.5%;top:128.8%;">/            /</pre>
+		</div>
+	</div>
+</body>
+
+</html> 
